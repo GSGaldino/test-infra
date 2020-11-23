@@ -1,13 +1,8 @@
 import HubspotForm from 'react-hubspot-form';
-import TagManager from 'react-gtm-module';
 
 
 export default function Home() {
-  const tagManagerArgs = {
-    gtmId: 'GTM-000000'
-  }
 
-  TagManager.initialize(tagManagerArgs);
   return (
     <>
       <h1>Home</h1>
