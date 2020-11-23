@@ -2,7 +2,7 @@ import HubspotForm from 'react-hubspot-form';
 import Head from 'next/head';
 
 
-export default function Home() {
+export default function Home({data}) {
   const renderGTMSnippet = () => (
     <script 
       dangerouslySetInnerHTML={{
@@ -30,6 +30,19 @@ export default function Home() {
         onReady={(form) => console.log('Form ready!')}
         loading={<div>Loading...</div>}
       />
+
+      <p>{data.bio}</p>
+      <img src={data.avatar_url} />
     </>
   )
+}
+
+export const getStaticProps = async () => {
+  const response = await fetch('https://api.github.com/users/GSGaldino')
+  const data = await response.json();
+  return {
+    props: {
+      data,
+    }
+  }
 }
